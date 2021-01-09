@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import About from "../pages/About";
 import Home from "../pages/Home";
 import Details from "../pages/Details";
@@ -7,46 +7,20 @@ import Login from "../pages/Login";
 import Messages from "../pages/Messages";
 import Edit from "../pages/Edit";
 import Add from "../pages/Add";
-
-import AuthService from "../services/auth.service";
+import Footer from "../components/Footer";
+import Admin from "../components/Admin";
+import Baner from "../components/Baner";
+import Test from "../pages/Test";
 
 import "./App.css";
 
 const App = () => {
   return (
+    <div className="cont bgColor">
     <Router>
-      <main className="ui container" id="bGround">
-        <div id="pic">
-          <div id="ecl">
-            tutaj napis
-            <nav>
-              <ul>
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
-                <li>
-                  <Link to="/about">About</Link>
-                </li>
-                <li>
-                  <Link to="/Messages">Messages</Link>
-                </li>
-                <li>
-                  <Link to="/login">Login</Link>
-                </li>
-                <li>
-                  <button
-                    onClick={() => {
-                      AuthService.logout();
-                      window.location.reload();
-                    }}
-                  >
-                    Logout
-                  </button>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
+        <Admin />
+        <Baner/>
+      <main className="ui container sitecontent" id="bGround">
         <Switch>
           <Route path="/about" component={About}></Route>
           <Route path="/messages">
@@ -58,12 +32,15 @@ const App = () => {
           </Route>
           <Route path="/add" component={Add}></Route>
           <Route path="/login" component={Login}></Route>
-          <Route path="/">
+          <Route path="/test">
+            <Test/>
+          </Route><Route path="/">
             <Home />
-          </Route>
-        </Switch>
-      </main>
-    </Router>
+          </Route>          
+        </Switch></main>
+        <Footer className='Footer'/>
+      
+    </Router></div>
   );
 };
 export default App;

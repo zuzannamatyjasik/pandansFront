@@ -14,35 +14,73 @@
   background-color: black;
 }
 
+@import url("https://fonts.googleapis.com/css2?family=Alegreya&display=swap");
+
 body {
-  background: rgba(255, 185, 134, 0.19);
+  font-family: "Alegreya", serif;
+}
+
+:root {
+  --pierwszy: #896978;
+  --drugi: #839791;
+  --trzeci: #9db2a5;
+  --czwarty: #f8dcc9;
+  --piaty: #f3bd90;
+  --szosty: #f2b074;
+  --siodmy: #f2a359;
+  --osmy: #fae7db;
+  --dziewiaty: #240b36;
 }
 
 #bGround {
-  min-height: 100vh;
-  background: rgba(255, 185, 134, 0.15);
+  background: var(--trzeci);
 }
-#pic {
-  height: 250px;
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: auto;
-  background-image: url("../phot/ad.jpg");
-  mix-blend-mode: darken;
-}
+
 .pages {
   margin-top: 25px !important;
 }
-#ecl {
-  position: relative;
-  height: 250px;
-  min-height: 300px;
-  min-width: 300px;
-  width: 100;
-  opacity: 0.7;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 134, 134, 0.67) 48.7%,
-    rgba(255, 214, 185, 0) 92.88%
-  );
+
+.sitecontent {
+  flex: 1;
+}
+.cont {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.bg-one {
+  background-color: var(--piaty);
+  padding: 5%;
+}
+
+.bg-one-p {
+  background-color: var(--czwarty);
+  padding: 5%;
+}
+.bg-one-d {
+  background-color: var(--trzeci);
+  padding: 15%;
+}
+.bg-one-t {
+  background-color: var(--drugi);
+  padding: 5%;
+}
+.bg-one-c {
+  background-color: var(--pierwszy);
+  padding: 5% !important;
+}
+.bgColor {
+  background-color: var(--osmy);
+}
+
+.foter {
+  background-color: var(--dziewiaty) !important;
+}
+h1 {
+  font-size: 4em !important;
+  color:#240b36 !important
+}
+.pad {
+padding: 3em !important;
 }

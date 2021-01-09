@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from "react";
 import Box from "../components/Box";
 import Sort from "../components/Sort";
+import { Grid, Container } from "semantic-ui-react";
 
 const Home = ({ data }) => {
   const [shops, setShops] = useState([]);
@@ -26,16 +27,14 @@ const Home = ({ data }) => {
   };
   const filter = (category) => {
     let filtered = shops;
-    if (category !== 'All') {
+    if (category !== "All") {
       filtered = shops.filter((shop) => {
         if (shop.category.includes(category)) {
           return shop;
         } else return false;
       });
       setFilteredShops(filtered);
-    }
-    else setFilteredShops(filtered);
-    
+    } else setFilteredShops(filtered);
   };
 
   useEffect(() => {
@@ -55,10 +54,20 @@ const Home = ({ data }) => {
     );
   });
   return (
-    <div className="ui pages stackable grid centered">
-      <Sort cats={unique} categoriesUnique={categoriesUnique} filter={filter} />
-      {box}
-    </div>
+    <>
+      <div className="bg-one-c">
+        <Sort
+          cats={unique}
+          categoriesUnique={categoriesUnique}
+          filter={filter}
+        />
+      </div>
+      <Container className="bg-one-t">
+        <Grid centered verticalAlign="middle" stackable divided="vertically">
+          <Grid.Row className="bg-one-d">{box}</Grid.Row>
+        </Grid>
+      </Container>
+    </>
   );
 };
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import AuthService from "../services/auth.service";
-
+import { Grid } from "semantic-ui-react";
 const Box = ({ data }) => {
   const [showButton, setShowButton] = useState("");
   const handleHover = () => {
@@ -13,7 +13,7 @@ const Box = ({ data }) => {
             Szczególy
           </button>
         </Link>
-      </>
+        </>
     );
     setShowButton(obrazek);
   };
@@ -23,6 +23,7 @@ const Box = ({ data }) => {
   };
 
   return (
+    <Grid.Column>
     <div className="ui pink card centered" key={data._id}>
       <div
         className="image"
@@ -50,6 +51,7 @@ const Box = ({ data }) => {
         </div>
       </div>
     </div>
+    </Grid.Column>
   );
 };
 
