@@ -1,7 +1,7 @@
 import React from "react";
 import { Select } from "semantic-ui-react";
 
-const Sort = (props) => {
+const Filter = (props) => {
 
     const choosen = (e) => {
         props.filter(e.target.firstChild.innerText)
@@ -18,4 +18,4 @@ const Sort = (props) => {
   );
 };
 
-export default Sort;
+export default Filter;

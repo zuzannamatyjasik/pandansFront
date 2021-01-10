@@ -16,31 +16,34 @@ import "./App.css";
 
 const App = () => {
   return (
-    <div className="cont bgColor">
-    <Router>
+    <div className="cont bg-color">
+      <Router>
         <Admin />
-        <Baner/>
-      <main className="ui container sitecontent" id="bGround">
-        <Switch>
-          <Route path="/about" component={About}></Route>
-          <Route path="/messages">
-            <Messages />
-          </Route>
-          <Route path="/edit/:id" component={Edit}></Route>
-          <Route path="/details/:id?">
-            <Details />
-          </Route>
-          <Route path="/add" component={Add}></Route>
-          <Route path="/login" component={Login}></Route>
-          <Route path="/test">
-            <Test/>
-          </Route><Route path="/">
-            <Home />
-          </Route>          
-        </Switch></main>
-        <Footer className='Footer'/>
-      
-    </Router></div>
+
+        <main className="ui container sitecontent" id="bGround">
+          <Switch>
+            <Route path="/about" component={About}></Route>
+            <Route path="/messages">
+              <Messages />
+            </Route>
+            <Route path="/edit/:id" component={Edit}></Route>
+            <Route path="/details/:id?">
+              <Details />
+            </Route>
+            <Route path="/add" component={Add}></Route>
+            <Route path="/login" component={Login}></Route>
+            <Route path="/test">
+              <Test />
+            </Route>
+            <Route path="/">
+              <Baner />
+              <Home />
+            </Route>
+          </Switch>
+        </main>
+        <Footer className="foter" />
+      </Router>
+    </div>
   );
 };
 export default App;

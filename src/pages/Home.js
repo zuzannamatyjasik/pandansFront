@@ -1,13 +1,13 @@
 import { React, useState, useEffect } from "react";
 import Box from "../components/Box";
-import Sort from "../components/Sort";
-import { Grid, Container } from "semantic-ui-react";
+import Filter from "../components/Filter";
+import { Grid, Container, Segment } from "semantic-ui-react";
 
 const Home = ({ data }) => {
   const [shops, setShops] = useState([]);
   const [filteredShops, setFilteredShops] = useState([]);
   const [unique, setUnique] = useState([
-    { key: "All", value: "All", text: "All" },
+    { key: "Wszystkie", value: "Wszystkie", text: "Wszystkie" },
   ]);
 
   const categoriesUnique = () => {
@@ -27,7 +27,7 @@ const Home = ({ data }) => {
   };
   const filter = (category) => {
     let filtered = shops;
-    if (category !== "All") {
+    if (category !== "Wszystkie") {
       filtered = shops.filter((shop) => {
         if (shop.category.includes(category)) {
           return shop;
@@ -55,13 +55,14 @@ const Home = ({ data }) => {
   });
   return (
     <>
-      <div className="bg-one-c">
-        <Sort
+      <Segment className="bg-one-c" textAlign="right">
+        <h2>Filtruj</h2>
+        <Filter
           cats={unique}
           categoriesUnique={categoriesUnique}
           filter={filter}
         />
-      </div>
+      </Segment>
       <Container className="bg-one-t">
         <Grid centered verticalAlign="middle" stackable divided="vertically">
           <Grid.Row className="bg-one-d">{box}</Grid.Row>

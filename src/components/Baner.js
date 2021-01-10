@@ -2,11 +2,11 @@ import { Grid, Image, Container } from "semantic-ui-react";
 
 const Baner = () => {
   return (
-    <Container className='bg-one'>
-      <Grid verticalAlign='middle' stackable divided="vertically">
+    <Container className='baner'>
+      <Grid centered verticalAlign='middle' stackable divided="vertically">
         <Grid.Row columns={2}>
-          <Grid.Column >
-            <Image src="./img/two.png" />
+          <Grid.Column className='about-image'>
+            <Image ui={ false} centered src="./img/two.png" />
           </Grid.Column>
           <Grid.Column textAlign='center' className='bg-one-p'>
             <div className='pad'>

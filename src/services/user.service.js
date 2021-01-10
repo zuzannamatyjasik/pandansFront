@@ -20,6 +20,21 @@ const getAllMessages = () => {
   });
 };
 
+const checkIfLoggedIn = () => {
+  let temp = axios.get("http://localhost:3001/messages/", {
+    headers: authHeader(),
+  });
+  temp
+    .then(() => {
+      console.log("logged in");
+      return true;
+    })
+    .catch(() => {
+      console.log("logged out");
+      return false;
+    });
+};
+
 const getMessageDetails = (id) => {
   return axios.get(`http://localhost:3001/messages/${id}`, {
     headers: authHeader(),
@@ -45,12 +60,18 @@ const addShop = (body) => {
 };
 
 const addMessage = (body) => {
-  return axios.post(
-    `http://localhost:3001/messages/`,
-    { ...body }
-  );
+  return axios.post(`http://localhost:3001/messages/`, { ...body });
 };
 
-const UserService = { deleteMessage, getAllMessages, editShop, deleteShop, addShop, addMessage, getMessageDetails };
+const UserService = {
+  deleteMessage,
+  getAllMessages,
+  editShop,
+  deleteShop,
+  addShop,
+  addMessage,
+  getMessageDetails,
+  checkIfLoggedIn
+};
 
 export default UserService;

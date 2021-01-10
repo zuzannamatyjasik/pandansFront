@@ -16,16 +16,16 @@ const Footer = () => {
           <Grid divided inverted stackable>
             
             <Grid.Column width={16}>
-              <Header inverted as='h4' content='Footer Header' />
-              <p>
-                Extra space for a call to action inside the footer that could help re-engage users.
+              <Header inverted as='h2' content='Footer Header' />
+              <p className='footer-desc'>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur deleniti similique, esse, reprehenderit enim temporibus quisquam dolor cum officiis vero est voluptatem voluptas obcaecati dignissimos tempore ex provident repellendus vel!Quam doloremque soluta debitis cum molestias autem, facere fuga totam dolore nostrum quibusdam et nemo maxime nobis voluptates saepe dignissimos accusamus quos. Dolor eveniet sequi voluptate qui veniam, ad iste.
               </p>
             </Grid.Column>
           </Grid>
   
           <Divider inverted section />
-          <List horizontal inverted divided link size='small'>
-            <List.Item as={Link} to="/">
+          <List horizontal inverted divided link size='large'>
+            <List.Item as={Link} to="/" >
             Strona Główna
             </List.Item>
             <List.Item as={Link} to="/about">

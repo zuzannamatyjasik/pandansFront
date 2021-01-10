@@ -1,23 +1,25 @@
-.magicButton {
+.magic-button {
   display: block;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translateX(-50%);
   background-color: red;
+  z-index: 99;
 }
 .blurred {
   position: absolute;
   width: 100%;
   height: 100%;
   opacity: 0.5;
+  z-index: 98;
   background-color: black;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Alegreya&display=swap");
 
 body {
-  font-family: "Alegreya", serif;
+  font-family: "Alegreya", serif !important;
 }
 
 :root {
@@ -30,6 +32,8 @@ body {
   --siodmy: #f2a359;
   --osmy: #fae7db;
   --dziewiaty: #240b36;
+  --dziesiaty: #adc2b1;
+  --jedenasty: #f3bd90
 }
 
 #bGround {
@@ -53,6 +57,15 @@ body {
   background-color: var(--piaty);
   padding: 5%;
 }
+.baner {
+  background-color: var(--piaty);
+  padding: 0 5%;
+}
+.about-baner {
+  background-color: var(--szosty) !important;
+  padding: 0;
+  margin: 0 !important;
+}
 
 .bg-one-p {
   background-color: var(--czwarty);
@@ -60,27 +73,66 @@ body {
 }
 .bg-one-d {
   background-color: var(--trzeci);
-  padding: 15%;
+  padding: 5% !important;
 }
 .bg-one-t {
   background-color: var(--drugi);
   padding: 5%;
+  margin: 0 !important;
 }
 .bg-one-c {
-  background-color: var(--pierwszy);
+  background-color: var(--pierwszy) !important;
   padding: 5% !important;
+  margin: 0 !important;
 }
-.bgColor {
+.bg-one-p {
+  background-color: var(--piaty) !important;
+  padding: 5% !important;
+  margin: 0 !important;
+}
+.bg-one-s {
+  background-color: var(--czwarty) !important;
+  padding: 5% !important;
+  margin: 0 !important;
+}
+.bg-color {
   background-color: var(--osmy);
 }
 
 .foter {
+  margin: 0 !important;
   background-color: var(--dziewiaty) !important;
 }
 h1 {
   font-size: 4em !important;
-  color:#240b36 !important
+  color: var(--dziewiaty) !important;
 }
 .pad {
-padding: 3em !important;
+  padding: 1em !important;
+}
+
+h2 {
+  color: var(--czwarty) !important;
+}
+
+a:hover {
+  color: var(--pierwszy) !important;
+}
+
+.desc {
+  color: var(--dziewiaty) !important;
+  text-align: center !important;
+  overflow-wrap: break-word;
+}
+
+.footer-desc {
+  color: var(--czwarty);
+}
+.relaxed {
+  margin-bottom: 3em !important;
+}
+.about-form {
+  background-color: var(--jedenasty);
+  padding: 5%;
+  margin: 0 !important;
 }

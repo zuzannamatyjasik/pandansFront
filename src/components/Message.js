@@ -15,15 +15,7 @@ const Message = ({props}) => {
   };
   return (
     <div>
-      <div className="ui attached pink message">
-        <div className="header">Skontaktuj się z nami!</div>
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem
-          voluptas tenetur nobis, quae quo, perferendis modi reprehenderit
-          molestiae laboriosam beatae totam sed eos facilis adipisci ducimus
-          sint labore temporibus libero.
-        </p>
-      </div>
+      
       <form className="ui form" onSubmit={handleSubmit}>
         <div className="required field">
           <label>Imię i Nazwisko</label>
