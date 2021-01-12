@@ -33,7 +33,7 @@ body {
   --osmy: #fae7db;
   --dziewiaty: #240b36;
   --dziesiaty: #adc2b1;
-  --jedenasty: #f3bd90
+  --jedenasty: #f3bd90;
 }
 
 #bGround {
@@ -135,4 +135,16 @@ a:hover {
   background-color: var(--jedenasty);
   padding: 5%;
   margin: 0 !important;
+}
+
+.error {
+  padding: 5%;
+}
+.denied{
+  padding: 5%;
+  background-color:var(--dziesiaty);
+}
+
+.button > a {
+  color: var(--dziewiaty) !important;
 }

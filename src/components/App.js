@@ -10,16 +10,26 @@ import Add from "../pages/Add";
 import Footer from "../components/Footer";
 import Admin from "../components/Admin";
 import Baner from "../components/Baner";
-import Test from "../pages/Test";
-
+import Error from "../pages/Error";
+import AccessDenied from "../pages/AccessDenied";
+import { useEffect } from "react";
 import "./App.css";
+import AuthService from "../services/auth.service";
 
 const App = () => {
+  // useEffect(() => {
+  //   const timer = setInterval(async () => {
+  //     let result = await AuthService.checkAuth();
+  //     console.log(result);
+  //   }, 5000);
+  //   return () => {
+  //     clearInterval(timer);
+  //   };
+  // });
   return (
     <div className="cont bg-color">
       <Router>
         <Admin />
-
         <main className="ui container sitecontent" id="bGround">
           <Switch>
             <Route path="/about" component={About}></Route>
@@ -31,14 +41,13 @@ const App = () => {
               <Details />
             </Route>
             <Route path="/add" component={Add}></Route>
+            <Route path="/ac" component={AccessDenied}></Route>
             <Route path="/login" component={Login}></Route>
-            <Route path="/test">
-              <Test />
-            </Route>
-            <Route path="/">
+            <Route exact path="/">
               <Baner />
               <Home />
             </Route>
+            <Route component={Error} />
           </Switch>
         </main>
         <Footer className="foter" />

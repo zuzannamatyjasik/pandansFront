@@ -6,7 +6,7 @@ const About = (props) => {
   return (
     <Segment>
     <Container >
-      <Grid verticalAlign="middle" stackable divided="vertically">
+      <Grid verticalAlign="middle" stackable divided="false">
         <Grid.Row columns={2}className="bg-one-d">
           <Grid.Column textAlign="center">
             <div>
