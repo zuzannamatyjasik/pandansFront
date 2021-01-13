@@ -11,7 +11,7 @@ const Message = ({props}) => {
         content: e.target[3].value,
     }
     UserService.addMessage(body);
-    props.history.push("/");
+    props.history.push("/thanks");
   };
   return (
     <div>

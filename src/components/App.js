@@ -12,24 +12,31 @@ import Admin from "../components/Admin";
 import Baner from "../components/Baner";
 import Error from "../pages/Error";
 import AccessDenied from "../pages/AccessDenied";
-import { useEffect } from "react";
+import Thanks from "../pages/Thanks";
+import { useEffect, useState } from "react";
 import "./App.css";
 import AuthService from "../services/auth.service";
 
 const App = () => {
-  // useEffect(() => {
-  //   const timer = setInterval(async () => {
-  //     let result = await AuthService.checkAuth();
-  //     console.log(result);
-  //   }, 5000);
-  //   return () => {
-  //     clearInterval(timer);
-  //   };
-  // });
+  const [valid, setValid] = useState(false);
+  if (localStorage.getItem("user")) {
+    AuthService.checkAuth().then((data) => setValid(data));
+  }
+
+  useEffect(() => {
+    const timer = setInterval(async () => {
+      let result = await AuthService.checkAuth();
+      setValid(result);
+      console.log(valid, "APP");
+    }, 12000);
+    return () => {
+      clearInterval(timer);
+    };
+  });
   return (
     <div className="cont bg-color">
       <Router>
-        <Admin />
+        <Admin valid={valid} />
         <main className="ui container sitecontent" id="bGround">
           <Switch>
             <Route path="/about" component={About}></Route>
@@ -42,6 +49,7 @@ const App = () => {
             </Route>
             <Route path="/add" component={Add}></Route>
             <Route path="/ac" component={AccessDenied}></Route>
+            <Route path="/thanks" component={Thanks}></Route>
             <Route path="/login" component={Login}></Route>
             <Route exact path="/">
               <Baner />

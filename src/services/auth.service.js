@@ -28,18 +28,21 @@ const logout = () => {
 };
 
 const checkAuth = () => {
-  const token = JSON.parse(localStorage.getItem("user")).token;
-  return axios
-    .post(API_URL + "check", {
-      token,
-    })
-    .then((response) => {
-      if (response.data.valid) {
-        return true;
-      } else {
-        return false;
-      }
-    });
+  if (localStorage.getItem('user')) {
+    const token = JSON.parse(localStorage.getItem("user")).token;
+    return axios
+      .post(API_URL + "check", {
+        token,
+      })
+      .then((response) => {
+        if (response.data.valid) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+  }
+  else return false;
 };
 
 const getCurrentUser = () => {

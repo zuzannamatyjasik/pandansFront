@@ -65,7 +65,7 @@ const Home = ({ data }) => {
       </Segment>
       <Container className="bg-one-t">
         <Grid centered verticalAlign="middle" stackable divided="vertically">
-          <Grid.Row className="bg-one-d">{box}</Grid.Row>
+          <Grid.Row >{box}</Grid.Row>
         </Grid>
       </Container>
     </>

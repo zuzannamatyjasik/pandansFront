@@ -148,3 +148,12 @@ a:hover {
 .button > a {
   color: var(--dziewiaty) !important;
 }
+
+.login-page{
+  background-color:var(--pierwszy);
+}
+
+.thanks{
+  padding: 5%;
+  background-color:var(--dziesiaty);
+}

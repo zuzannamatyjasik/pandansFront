@@ -1,5 +1,14 @@
 import { React, useState } from "react";
 import AuthService from "../services/auth.service";
+import {
+  Button,
+  Form,
+  Grid,
+  Header,
+  Image,
+  Message,
+  Segment,
+} from "semantic-ui-react";
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
@@ -37,53 +46,53 @@ const Login = (props) => {
     );
   };
   return (
-    <div>
-      <div className="ui middle aligned center aligned grid">
-        <div className="column">
-          <form className="ui large form" onSubmit={handleLogin}>
-            <div className="ui stacked segment">
-              <div className="field">
-                <div className="ui left icon input">
-                  <i className="user icon"></i>
-                  <input
-                    type="text"
-                    name="email"
-                    value={email}
-                    onChange={onChangeEmail}
-                    placeholder="E-mail address"
-                  />
-                </div>
-              </div>
-              <div className="field">
-                <div className="ui left icon input">
-                  <i className="lock icon"></i>
-                  <input
-                    type="password"
-                    value={password}
-                    onChange={onChangePassword}
-                    name="password"
-                    placeholder="Hasło"
-                  />
-                </div>
-              </div>
-              <button
-                type="submit"
-                className="ui fluid large pink submit button"
-              >
-                Login
-              </button>
-            </div>
-          </form>
-          {message && (
-            <div>
-              <div className="red" role="alert">
-                {message}
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
-    </div>
+    <Grid
+      stackable
+      className="login-page"
+      textAlign="center"
+      style={{ height: "70vh" }}
+      verticalAlign="middle"
+    >
+      <Grid.Row columns='3'>
+        <Grid.Column textAlign="centered" >
+        <Image size='medium' src="./img/catT.png" verticalAlign="middle" />
+          
+        </Grid.Column>
+        <Grid.Column style={{ maxWidth: 450 }} >
+          <Header as="h2" textAlign="center">
+            Zaloguj się na konto administratora!
+          </Header>
+          <Form onSubmit={handleLogin} size="large">
+            <Segment stacked>
+              <Form.Input
+                value={email}
+                onChange={onChangeEmail}
+                fluid
+                icon="user"
+                iconPosition="left"
+                placeholder="Email"
+              />
+              <Form.Input
+                fluid
+                value={password}
+                onChange={onChangePassword}
+                icon="lock"
+                iconPosition="left"
+                placeholder="Hasło"
+                type="password"
+              />
+
+              <Button fluid size="large" type="submit">
+                Zaloguj
+              </Button>
+            </Segment>
+          </Form>
+        </Grid.Column>
+        <Grid.Column textAlign="centered" >
+        <Image size='medium' src="./img/cat.png" verticalAlign="middle" />
+            </Grid.Column>
+      </Grid.Row>
+    </Grid>
   );
 };
 

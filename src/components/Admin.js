@@ -1,8 +1,38 @@
 import { Button, Container, Menu, Segment } from "semantic-ui-react";
 import AuthService from "../services/auth.service";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
-const Admin = () => {
+const Admin = (props) => {
+  useEffect(() => {
+    console.log(props.valid);
+  });
+  let logged;
+  if (props.valid) {
+    console.log(props.valid);
+    logged = (
+      <>
+        <Menu.Item as={Link} to="/Messages">
+          Wiadomości 
+        </Menu.Item>
+        <Menu.Item position="right">
+          <Button
+            as="a"
+            inverted={true}
+            onClick={() => {
+              AuthService.logout();
+              window.location.reload();
+            }}
+          >
+            Wyloguj
+          </Button>
+        </Menu.Item>
+      </>
+    );
+  } else {
+    console.log(props.valid);
+  }
+
   return (
     <Segment
       fixed={"top"}
@@ -21,26 +51,12 @@ const Admin = () => {
       >
         <Container>
           <Menu.Item as={Link} to="/">
-            Strona Główna
+            Strona Główna {props.valid}
           </Menu.Item>
           <Menu.Item as={Link} to="/about">
             O nas
           </Menu.Item>
-          <Menu.Item as={Link} to="/Messages">
-            Wiadomości
-          </Menu.Item>
-          <Menu.Item position="right">
-            <Button
-              as="a"
-              inverted={true}
-              onClick={() => {
-                AuthService.logout();
-                window.location.reload();
-              }}
-            >
-              Wyloguj
-            </Button>
-          </Menu.Item>
+          {logged}
         </Container>
       </Menu>
     </Segment>
