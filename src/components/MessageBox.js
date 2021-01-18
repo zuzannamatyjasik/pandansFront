@@ -1,7 +1,7 @@
 import { React, useState } from "react";
+import { Accordion, Icon, Table, Button } from 'semantic-ui-react'
 import UserService from "../services/user.service";
-import { Accordion, Icon } from "semantic-ui-react";
-import { Button } from "semantic-ui-react";
+
 
 const MessageBox = (props) => {
   const [activeIndex, setActiveIndex] = useState(-1);
@@ -20,36 +20,36 @@ const MessageBox = (props) => {
     setActiveIndex(newIndex);
   };
   return (
-    <tr key={props.id}>
-      <td className="right aligned collapsing">
-        <i className="envelope icon"></i>
-      </td>
-      <td className="collapsing">{props.name}</td>
-      <td>
-        <Accordion fluid>
+    <Table.Row key={props.id}w>
+    <Table.Cell>
+      <Icon name="envelope"/>
+    </Table.Cell>
+    <Table.Cell><h3>{props.name}</h3></Table.Cell>
+    <Table.Cell><Accordion fluid>
           <Accordion.Title
             active={activeIndex === 0}
             index={0}
             onClick={handleClick}
-          >
+          ><h3>{props.title}</h3>
             <Icon name="dropdown" />
-            {props.title}
+            
           </Accordion.Title>
           <Accordion.Content active={activeIndex === 0}>
-            <p>{wiadomosc.content}</p>
-            <p>{wiadomosc.email}</p>
-            <Button
+            <p><h3>Treść: </h3> {wiadomosc.content}</p>
+            <p><h3>Adres zwotny: </h3> {wiadomosc.email}</p>
+            
+          </Accordion.Content>
+      </Accordion></Table.Cell>
+      <Table.Cell><Button
               onClick={async () => {
                 await UserService.deleteMessage(props.id);
                 props.deleteMessage(props.id);
               }}
-            >
-              <i className="trash icon"></i>
-            </Button>
-          </Accordion.Content>
-        </Accordion>
-      </td>
-    </tr>
+              compact icon="trash" color="red" negative>
+        
+            </Button></Table.Cell>
+  </Table.Row>
+
   );
 };
 

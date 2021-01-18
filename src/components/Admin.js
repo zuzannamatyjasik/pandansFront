@@ -15,6 +15,9 @@ const Admin = (props) => {
         <Menu.Item as={Link} to="/Messages">
           Wiadomości 
         </Menu.Item>
+        <Menu.Item as={Link} to="/Add">
+          Dodaj nowy sklep 
+        </Menu.Item>
         <Menu.Item position="right">
           <Button
             as="a"

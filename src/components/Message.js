@@ -17,21 +17,21 @@ const Message = ({props}) => {
     <div>
       
       <form className="ui form" onSubmit={handleSubmit}>
-        <div className="required field">
+        <div className="field">
           <label>Imię i Nazwisko</label>
-          <input type="text" name="name" placeholder="Imię i Nazwisko" />
+          <input required type="text" name="name" placeholder="Imię i Nazwisko" />
         </div>
-        <div className="required field">
+        <div className="field">
           <label>Email</label>
-          <input type="text" name="email" placeholder="Adres email" />
+          <input required type="text" name="email" placeholder="Adres email" />
         </div>
-        <div className="required field">
+        <div className="field">
           <label>Tytuł</label>
-          <input type="text" name="title" placeholder="Tytuł" />
+          <input required type="text" name="title" placeholder="Tytuł" />
         </div>
-        <div className="required field">
-          <label>Kontent</label>
-          <textarea name="content"></textarea>
+        <div className="field">
+          <label>Treść</label>
+          <textarea  required name="content"></textarea>
         </div>
         <button className="ui button" type="submit">
           Wyślij

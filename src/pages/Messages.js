@@ -1,4 +1,6 @@
 import { React, useState, useEffect } from "react";
+import { Table } from "semantic-ui-react";
+
 import UserService from "../services/user.service";
 import MessageBox from "../components/MessageBox";
 
@@ -14,10 +16,12 @@ const Messages = () => {
     fetchData();
   }, []);
   const deleteMessage = (id) => {
-    let newMess = messages.filter((x) => {
-      return x._id !== id ? x : false;
-    });
-    setMessages(newMess);
+    if (window.confirm("Jesteś pewien, że chcesz usunąć wiadomość?")) {
+      let newMess = messages.filter((x) => {
+        return x._id !== id ? x : false;
+      });
+      setMessages(newMess);
+    }
   };
   const messagebox = messages.map((data) => {
     return (
@@ -31,16 +35,18 @@ const Messages = () => {
     );
   });
   return (
-    <div>
-      <table className="ui celled striped table">
-        <thead>
-          <tr>
-            <th colSpan="3">Wiadomości</th>
-          </tr>
-        </thead>
-        <tbody>{messagebox}</tbody>
-      </table>
-    </div>
+    <Table celled>
+      <Table.Header>
+        <Table.Row>
+          <Table.HeaderCell width={1}></Table.HeaderCell>
+          <Table.HeaderCell width={3}>Nadawca</Table.HeaderCell>
+          <Table.HeaderCell width={11}>Temat</Table.HeaderCell>
+          <Table.HeaderCell width={1}>Usuń</Table.HeaderCell>
+        </Table.Row>
+      </Table.Header>
+
+      <Table.Body>{messagebox}</Table.Body>
+    </Table>
   );
 };
 

@@ -1,5 +1,6 @@
 import React from "react";
 import UserService from "../services/user.service";
+import { Button, Input, Form,  Grid} from 'semantic-ui-react'
 
 const Add = (props) => {
   const handleSubmit = (e) => {
@@ -19,39 +20,53 @@ const Add = (props) => {
   };
 
   return (
-    <div>
-      <form className="ui form" onSubmit={handleSubmit}>
-        <div className="field">
-          <label>Nazwa</label>
-          <input type="text" name="name" placeholder="name" />
-        </div>
-        <div className="field">
-          <label>Email</label>
-          <input type="email" name="email" placeholder="email" />
-        </div>
-        <div className="field">
-          <label>Bio</label>
-          <input type="text" name="bio" placeholder="bio" />
-        </div>
-        <div className="field">
-          <label>Kategorie</label>
-          <input type="text" name="category" placeholder="category" />
-        </div>
-        <div className="field">
-          <label>Facebook</label>
-          <input type="text" name="facebook" placeholder="facebook" />
-        </div>
-        <div className="field">
-          <label>Instagram</label>
-          <input type="text" name="instagram" placeholder="instagram" />
-        </div>
-        <div className="field">
-          <label>Strona internetowa</label>
-          <input type="text" name="website" placeholder="website" />
-        </div>
-        <button type="submit">dodaj</button>
-      </form>
-    </div>
+    <Grid>
+      <Grid.Row columns={1} className="bg-one-d">
+          <Grid.Column textAlign="center">
+            <div>
+              <h1>Dodaj nowy sklep</h1>
+            </div>
+          </Grid.Column>
+        </Grid.Row>
+    <Grid.Row columns={1} className="bg-one-p">
+    <Grid.Column textAlign="center" className="pad">
+
+    <Form onSubmit={handleSubmit}>
+    <Form.Field>
+      <label>Nazwa</label>
+      <Input type="text" name="name" placeholder="name" />
+    </Form.Field>
+    <Form.Field>
+      <label>Email</label>
+      <Input type="email" name="email" placeholder="email" />
+    </Form.Field>
+    <Form.Field>
+      <label>Bio</label>
+      <Input type="text" name="bio" placeholder="bio"  />
+    </Form.Field>
+    <Form.Field>
+      <label>Kategorie</label>
+      <Input type="text" name="category" placeholder="category"  />
+    </Form.Field>
+    <Form.Field>
+        <label>Facebook</label>
+      <Input type="text" name="facebook" placeholder="facebook"  />
+    </Form.Field>
+    <Form.Field>
+      <label>Instagram</label>
+      <Input type="text" name="instagram" placeholder="instagram"  />
+    </Form.Field>
+    <Form.Field>
+      <label>Strona internetowa</label>
+      <Input type="text" name="website" placeholder="website" />
+    </Form.Field>
+
+              <Button type='submit'>Dodaj</Button>
+
+          </Form>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
   );
 };
 
