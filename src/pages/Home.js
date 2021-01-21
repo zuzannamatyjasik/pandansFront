@@ -56,16 +56,31 @@ const Home = ({ data }) => {
   return (
     <>
       <Segment className="bg-one-c" textAlign="right">
-        <h2>Filtruj</h2>
-        <Filter
-          cats={unique}
-          categoriesUnique={categoriesUnique}
-          filter={filter}
-        />
+        <Grid columns={3} >
+          <Grid.Row>
+            <Grid.Column></Grid.Column>
+            <Grid.Column>
+              <h2>Filtruj</h2>
+              <Filter
+                cats={unique}
+                categoriesUnique={categoriesUnique}
+                filter={filter}
+              />
+            </Grid.Column>
+            <Grid.Column>
+              <h2>Sortuj</h2>
+              <Filter
+                cats={unique}
+                categoriesUnique={categoriesUnique}
+                filter={filter}
+              />
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
       </Segment>
       <Container className="bg-one-t">
         <Grid centered verticalAlign="middle" stackable divided="vertically">
-          <Grid.Row >{box}</Grid.Row>
+          <Grid.Row>{box}</Grid.Row>
         </Grid>
       </Container>
     </>

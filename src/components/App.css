@@ -17,7 +17,7 @@
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Alegreya&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Merienda:wght@700&display=swap');
 body {
   font-family: "Alegreya", serif !important;
 }
@@ -140,20 +140,71 @@ a:hover {
 .error {
   padding: 5%;
 }
-.denied{
+.denied {
   padding: 5%;
-  background-color:var(--dziesiaty);
+  background-color: var(--dziesiaty);
 }
 
 .button > a {
   color: var(--dziewiaty) !important;
 }
 
-.login-page{
-  background-color:var(--pierwszy);
+.login-page {
+  background-color: var(--pierwszy);
 }
 
-.thanks{
+.thanks {
   padding: 5%;
-  background-color:var(--dziesiaty);
+  background-color: var(--dziesiaty);
+}
+
+.det-bg {
+  background-color: var(--dziesiaty) !important;
+  margin: 0;
+  border: 0 !important;
+}
+
+.det-head {
+  padding: 3% !important;
+  background-color: var(--piaty);
+  border-bottom: 5px dashed var(--pierwszy);
+  margin: 0;
+  
+}
+.det-head h1 {
+  font-family: Merienda, serif !important;
+}
+
+.det-social {
+  border-top: 5px dashed var(--pierwszy);
+  background-color: var(--drugi);
+  padding-top: 30px !important;
+}
+.det-back {
+  background-color: var(--drugi);
+  padding-bottom: 30px !important;
+}
+.social {
+  font-size: 1.5em;
+}
+.social-bagdes {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  color: var(--czwarty) !important;
+}
+.bio {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  height: 100%;
+}
+.bio > * {
+  flex-grow: 1;
+  color: var(--dziewiaty) !important;
+}
+.det-label {
+  background-color: var(--pierwszy)!important;
+  color: var(--czwarty) !important;
+
 }

@@ -33,6 +33,8 @@ const App = () => {
       clearInterval(timer);
     };
   });
+
+  
   return (
     <div className="cont bg-color">
       <Router>
@@ -40,14 +42,18 @@ const App = () => {
         <main className="ui container sitecontent" id="bGround">
           <Switch>
             <Route path="/about" component={About}></Route>
-            <Route path="/messages">
-              <Messages />
+<Route path="/edit/:id" component={Edit}></Route>
+            <Route path="/details/:id?" component={Details}>
+              
             </Route>
-            <Route path="/edit/:id" component={Edit}></Route>
-            <Route path="/details/:id?">
-              <Details />
+
+            <Route path="/messages" component={valid ? Messages : AccessDenied}>
+              
             </Route>
-            <Route path="/add" component={Add}></Route>
+            
+            <Route path="/add" component={valid ? Add : AccessDenied}></Route>
+            
+            
             <Route path="/ac" component={AccessDenied}></Route>
             <Route path="/thanks" component={Thanks}></Route>
             <Route path="/login" component={Login}></Route>

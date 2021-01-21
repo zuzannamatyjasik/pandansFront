@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button, Image, Container, Grid } from "semantic-ui-react";
-import AuthService from "../services/auth.service";
+//import AuthService from "../services/auth.service";
 const Error = () => {
   return (
     <Container centered className="error">
