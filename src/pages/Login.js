@@ -1,13 +1,6 @@
 import { React, useState } from "react";
 import AuthService from "../services/auth.service";
-import {
-  Button,
-  Form,
-  Grid,
-  Header,
-  Image,
-  Segment,
-} from "semantic-ui-react";
+import { Button, Form, Grid, Header, Image, Segment } from "semantic-ui-react";
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
@@ -52,12 +45,11 @@ const Login = (props) => {
       style={{ height: "70vh" }}
       verticalAlign="middle"
     >
-      <Grid.Row columns='3'>
-        <Grid.Column textAlign="centered" >
-        <Image size='medium' src="./img/catT.png" verticalAlign="middle" />
-          
+      <Grid.Row columns="3">
+        <Grid.Column textAlign="centered">
+          <Image size="medium" src="./img/catT.png" verticalAlign="middle" />
         </Grid.Column>
-        <Grid.Column style={{ maxWidth: 450 }} >
+        <Grid.Column style={{ maxWidth: 450 }}>
           <Header as="h2" textAlign="center">
             Zaloguj się na konto administratora!
           </Header>
@@ -87,9 +79,9 @@ const Login = (props) => {
             </Segment>
           </Form>
         </Grid.Column>
-        <Grid.Column textAlign="centered" >
-        <Image size='medium' src="./img/cat.png" verticalAlign="middle" />
-            </Grid.Column>
+        <Grid.Column textAlign="centered">
+          <Image size="medium" src="./img/cat.png" verticalAlign="middle" />
+        </Grid.Column>
       </Grid.Row>
     </Grid>
   );

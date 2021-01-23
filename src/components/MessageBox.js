@@ -1,7 +1,6 @@
 import { React, useState } from "react";
-import { Accordion, Icon, Table, Button } from 'semantic-ui-react'
+import { Accordion, Icon, Table, Button } from "semantic-ui-react";
 import UserService from "../services/user.service";
-
 
 const MessageBox = (props) => {
   const [activeIndex, setActiveIndex] = useState(-1);
@@ -20,36 +19,47 @@ const MessageBox = (props) => {
     setActiveIndex(newIndex);
   };
   return (
-    <Table.Row key={props.id}w>
-    <Table.Cell>
-      <Icon name="envelope"/>
-    </Table.Cell>
-    <Table.Cell><h3>{props.name}</h3></Table.Cell>
-    <Table.Cell><Accordion fluid>
+    <Table.Row key={props.id} w>
+      <Table.Cell>
+        <Icon name="envelope" />
+      </Table.Cell>
+      <Table.Cell>
+        <h3>{props.name}</h3>
+      </Table.Cell>
+      <Table.Cell>
+        <Accordion fluid>
           <Accordion.Title
             active={activeIndex === 0}
             index={0}
             onClick={handleClick}
-          ><h3>{props.title}</h3>
-            <Icon name="dropdown" />
-            
+          >
+            <h3>
+              {props.title} <Icon name="dropdown" />
+            </h3>
           </Accordion.Title>
           <Accordion.Content active={activeIndex === 0}>
-            <p><h3>Treść: </h3> {wiadomosc.content}</p>
-            <p><h3>Adres zwotny: </h3> {wiadomosc.email}</p>
-            
+            <p>
+              <h3>Treść: </h3> {wiadomosc.content}
+            </p>
+            <p>
+              <h3>Adres zwotny: </h3> {wiadomosc.email}
+            </p>
           </Accordion.Content>
-      </Accordion></Table.Cell>
-      <Table.Cell><Button
-              onClick={async () => {
-                await UserService.deleteMessage(props.id);
-                props.deleteMessage(props.id);
-              }}
-              compact icon="trash" color="red" negative>
-        
-            </Button></Table.Cell>
-  </Table.Row>
-
+        </Accordion>
+      </Table.Cell>
+      <Table.Cell>
+        <Button
+          onClick={async () => {
+            await UserService.deleteMessage(props.id);
+            props.deleteMessage(props.id);
+          }}
+          compact
+          icon="trash"
+          color="red"
+          negative
+        ></Button>
+      </Table.Cell>
+    </Table.Row>
   );
 };
 

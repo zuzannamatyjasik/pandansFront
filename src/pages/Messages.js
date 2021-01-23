@@ -38,10 +38,10 @@ const Messages = () => {
     <Table celled>
       <Table.Header>
         <Table.Row>
-          <Table.HeaderCell width={1}></Table.HeaderCell>
-          <Table.HeaderCell width={3}>Nadawca</Table.HeaderCell>
-          <Table.HeaderCell width={11}>Temat</Table.HeaderCell>
-          <Table.HeaderCell width={1}>Usuń</Table.HeaderCell>
+          <Table.HeaderCell width={"1"}></Table.HeaderCell>
+          <Table.HeaderCell width={"3"}>Nadawca</Table.HeaderCell>
+          <Table.HeaderCell width={"11"}>Temat</Table.HeaderCell>
+          <Table.HeaderCell width={"1"}>Usuń</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
 

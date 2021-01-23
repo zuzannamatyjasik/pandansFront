@@ -28,7 +28,7 @@ const logout = () => {
 };
 
 const checkAuth = () => {
-  if (localStorage.getItem('user')) {
+  if (localStorage.getItem("user")) {
     const token = JSON.parse(localStorage.getItem("user")).token;
     return axios
       .post(API_URL + "check", {
@@ -41,8 +41,7 @@ const checkAuth = () => {
           return false;
         }
       });
-  }
-  else return false;
+  } else return false;
 };
 
 const getCurrentUser = () => {

@@ -9,7 +9,7 @@ import {
   Button,
   Label,
 } from "semantic-ui-react";
-import Photo from "../components/Photo";
+import UserService from "../services/user.service";
 
 const Details = (props) => {
   let { id } = useParams();
@@ -52,10 +52,10 @@ const Details = (props) => {
           <Grid.Row>
             <Grid.Column>
               {shop.photo ? (
-                <Photo shop={shop}></Photo>
+                <Image src={UserService.getImage(shop)} />
               ) : (
                 <Image src="../img/two.png" />
-            )}
+              )}
             </Grid.Column>
             <Grid.Column textAlign="center">
               <div className="bio">

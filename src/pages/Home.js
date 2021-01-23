@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from "react";
 import Box from "../components/Box";
 import Filter from "../components/Filter";
+import Sort from "../components/Sort";
 import { Grid, Container, Segment } from "semantic-ui-react";
 
 const Home = ({ data }) => {
@@ -36,6 +37,24 @@ const Home = ({ data }) => {
       setFilteredShops(filtered);
     } else setFilteredShops(filtered);
   };
+  const sort = (option) => {
+    let temp;
+    if (option === "Od A do Z") {
+      temp = [1, -1];
+    } else temp = [-1, 1];
+    let posortowane = [...filteredShops].sort((a, b) => {
+      let nameA = a.name.toUpperCase();
+      let nameB = b.name.toUpperCase();
+      if (nameA > nameB) {
+        return temp[0];
+      }
+      if (nameB > nameA) {
+        return temp[1];
+      }
+      return 0;
+    });
+    setFilteredShops(posortowane);
+  };
 
   useEffect(() => {
     fetch("http://localhost:3001/shops")
@@ -46,7 +65,7 @@ const Home = ({ data }) => {
       })
       .catch((err) => console.log(err));
   }, []);
-  const box = filteredShops.map((sklep) => {
+  let box = filteredShops.map((sklep) => {
     return (
       <div key={sklep._id} className="five wide column">
         <Box data={sklep} />
@@ -56,7 +75,7 @@ const Home = ({ data }) => {
   return (
     <>
       <Segment className="bg-one-c" textAlign="right">
-        <Grid columns={3} >
+        <Grid columns={3}>
           <Grid.Row>
             <Grid.Column></Grid.Column>
             <Grid.Column>
@@ -64,16 +83,12 @@ const Home = ({ data }) => {
               <Filter
                 cats={unique}
                 categoriesUnique={categoriesUnique}
-                filter={filter}
+                func={filter}
               />
             </Grid.Column>
             <Grid.Column>
               <h2>Sortuj</h2>
-              <Filter
-                cats={unique}
-                categoriesUnique={categoriesUnique}
-                filter={filter}
-              />
+              <Sort func={sort} />
             </Grid.Column>
           </Grid.Row>
         </Grid>

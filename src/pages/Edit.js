@@ -1,132 +1,164 @@
 import { React, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
 import UserService from "../services/user.service";
+import { Link } from "react-router-dom";
+import { Button, Input, Form, Grid } from "semantic-ui-react";
+
 const Edit = (props) => {
   let { id } = useParams();
-  const [shop, setShop] = useState({});
   const [newShop, setNewShop] = useState({
     name: "",
     bio: "",
+    email:"",
     facebook: "",
     instagram: "",
     website: "",
     category: [],
+    photo: ''
   });
-  let kategorie = "";
   useEffect(() => {
-    fetch(`http://localhost:3001/shops/${id}`)
-      .then((response) => response.json())
-      .then((result) => {
-        setShop(result.info);
-        if (!newShop.name) {
-          setNewShop(result.info);
-        }
-      })
-      .catch((err) => console.log(err));
-  });
-
-  if (newShop && newShop.category && newShop.category.length > 0) {
-    kategorie = newShop.category.join(",");
-  } else kategorie = "";
-
-  if (!shop) {
-    return <div>pusto</div>;
-  }
-  const handleName = (e) => {
-    setNewShop({ ...newShop, name: e.target.value });
-  };
-  const handleBio = (e) => {
-    setNewShop({ ...newShop, bio: e.target.value });
-  };
-  const handleChange = (e, pole) => {
-    if (pole === "facebook")
-      setNewShop({ ...newShop, facebook: e.target.value });
-    else if (pole === "instagram")
-      setNewShop({ ...newShop, instagram: e.target.value });
-    else if (pole === "website")
-      setNewShop({ ...newShop, website: e.target.value });
-    else if (pole === "category") {
-      let temp = e.target.value.split(",");
-      setNewShop({ ...newShop, category: temp });
-    }
+    const getData = async () => {
+      let temp = await UserService.getShop(id);
+      setNewShop(temp.data.info);
+    };
+    getData();
+  }, [id]);
+  const handleChange = (e) => {
+    let temp = { ...newShop };
+    let pole = e.target.name;
+    if (pole === "photo") temp[pole] = e.target.files[0];
+    else temp[pole] = e.target.value;
+    setNewShop(temp);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(newShop);
-    UserService.editShop(newShop._id, newShop);
+    let formData = new FormData();
+    Object.entries(newShop).forEach((element) => {
+      formData.append(element[0], element[1]);
+    });
+    UserService.editShop(newShop._id, formData)
+      .then(() => props.history.push("/"))
+      .catch(() => props.history.push("/error"));
   };
+
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="ui pages grid centered container ">
-        <div className="sixteen wide column ui input ">
-          <input value={newShop.name} onChange={handleName}></input>
-        </div>
-        <div className="eight wide column ">
-          <img className="ui fluid image" src="../img/CAT.jpg" alt="kot" />
-        </div>
-
-        <div className="eight wide column ">
-          <input value={newShop.bio} onChange={handleBio}></input>
-        </div>
-
-        <div className="eight wide column ">
+    <Grid>
+      <Grid.Row columns={1} className="bg-one-d">
+        <Grid.Column textAlign="center">
           <div>
-            <a href={shop.facebook}>
-              <i className="facebook big pink icon"></i>
-            </a>
-            <input
-              value={newShop.facebook}
-              onChange={(e) => handleChange(e, "facebook")}
-            ></input>
-
-            <a href={shop.instagram}>
-              <i className="instagram big pink icon"></i>
-            </a>
-            <input
-              value={newShop.instagram}
-              onChange={(e) => handleChange(e, "instagram")}
-            ></input>
-
-            <a href={shop.website}>
-              <i className="globe big pink icon"></i>
-            </a>
-            <input
-              value={newShop.website}
-              onChange={(e) => handleChange(e, "website")}
-            ></input>
+            <h1>Edytuj szczegóły sklepu</h1>
           </div>
-        </div>
-        <div className="eight wide column ">
-          <input
-            type="text"
-            value={kategorie}
-            onChange={(e) => handleChange(e, "category")}
-          />
-        </div>
-
-        <div className="eight wide column ">
-          <button
-            type="button"
-            className="ui youtube button"
-            onClick={async() => {
-              await UserService.deleteShop(newShop._id);
-              props.history.push("/");
-              window.location.reload();
-            }}
-          >
-            <i
-              className="heart icon"
-            ></i>
-            Usuń
-          </button>
+        </Grid.Column>
+      </Grid.Row>
+      <Grid.Row columns={1} className="bg-one-p">
+        <Grid.Column textAlign="center" className="pad">
+          <Form onSubmit={handleSubmit}>
+            <Form.Field>
+              <label>Nazwa</label>
+              <Input
+                type="text"
+                name="name"
+                value={newShop.name ? newShop.name : ""}
+                onChange={handleChange}
+                required
+              />
+            </Form.Field>
+            <Form.Field>
+              <label>Email</label>
+              <Input
+                type="email"
+                name="email"
+                value={newShop.email  ? newShop.email : ""}
+                onChange={handleChange}
+                required
+              />
+            </Form.Field>
+            <Form.Field>
+              <label>Bio</label>
+              <Input
+                type="text"
+                name="bio"
+                value={newShop.bio ? newShop.bio : ""}
+                onChange={handleChange}
+                required
+              />
+            </Form.Field>
+            <Form.Field>
+              <label>Kategorie</label>
+              <Input
+                type="text"
+                name="category"
+                value={newShop.category ? newShop.category : ""}
+                onChange={handleChange}
+                required
+              />
+            </Form.Field>
+            <Form.Field>
+              <label>Facebook</label>
+              <Input
+                type="text"
+                name="facebook"
+                value={newShop.facebook ? newShop.facebook : ""}
+                onChange={handleChange}
+              />
+            </Form.Field>
+            <Form.Field>
+              <label>Instagram</label>
+              <Input
+                type="text"
+                name="instagram"
+                value={newShop.instagram ? newShop.instagram : ""}
+                onChange={handleChange}
+              />
+            </Form.Field>
+            <Form.Field>
+              <label>Strona internetowa</label>
+              <Input
+                type="text"
+                name="website"
+                value={newShop.website ? newShop.website : ""}
+                onChange={handleChange}
+              />
+            </Form.Field>
+            <Form.Field>
+              <label>Zdjęcie</label>
+              <input
+                id="photo"
+                type="file"
+                name="photo"
+                onChange={handleChange}
+              />
+            </Form.Field>
+            <Button type="submit" color="olive">
+              <i className="refresh icon"></i>Aktualizuj
+            </Button>
+            <Button
+              color="red"
+              type="button"
+              onClick={async () => {
+                if (
+                  window.confirm("Jesteś pewien, że chcesz usunąć wiadomość?")
+                ) {
+                  await UserService.deleteShop(newShop._id);
+                  props.history.push("/");
+                  window.location.reload();
+                }
+              }}
+            >
+              <i className="trash icon"></i>
+              Usuń
+            </Button>
+          </Form>
+        </Grid.Column>
+      </Grid.Row>
+      <Grid.Row columns={1} className="bg-one-d">
+        <Grid.Column textAlign="center">
           <Link to="/">
-            <button type="button">powrot</button>
+            <Button type="button">Powrót</Button>
           </Link>
-        </div>
-      </div>
-      <button type="submit">wyslij</button>
-    </form>
+        </Grid.Column>
+      </Grid.Row>
+    </Grid>
   );
 };
 

@@ -124,6 +124,9 @@ a:hover {
   text-align: center !important;
   overflow-wrap: break-word;
 }
+.image-card{
+  height: 185px !important;
+}
 
 .footer-desc {
   color: var(--czwarty);

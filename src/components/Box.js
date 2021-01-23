@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import AuthService from "../services/auth.service";
+import UserService from "../services/user.service";
 import { Grid, Card, Image, Icon } from "semantic-ui-react";
 const Box = ({ data }) => {
   const [showButton, setShowButton] = useState("");
@@ -23,7 +24,7 @@ const Box = ({ data }) => {
   };
 
   return (
-    <Grid.Column className='relaxed'>
+    <Grid.Column className="relaxed">
       <Card key={data._id} centered>
         <div
           className="image"
@@ -31,27 +32,42 @@ const Box = ({ data }) => {
           onMouseLeave={handleLeave}
         >
           {showButton}
-          <Image rounded fluid src="../img/cat.jpg" alt="cat" />
+          <Image
+            className="image-card"
+            rounded
+            fluid
+            src={UserService.getImage(data)}
+            alt="icon"
+          />
         </div>
         <Card.Content>
-          <Card.Header ><h2 className="desc">{data.name}</h2></Card.Header>
-          <Card.Description >
+          <Card.Header>
+            <h2 className="desc">{data.name}</h2>
+          </Card.Header>
+          <Card.Description>
             <p>{data.bio}</p>
-            {data.website ? (
-              <a href={data.website}>
-                <i className="globe icon"></i>
-              </a>
-            ) : null}
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <a href={data.facebook}><Icon size="large" name="facebook square" /></a>
-          <a href={data.instagram}><Icon size="large" name="instagram" /></a>
-          <a href={data.website}><Icon size="large" name="globe" /></a>
+          {data.facebook ? (
+            <a href={data.facebook}>
+              <Icon size="large" name="facebook square" />
+            </a>
+          ) : null}
+          {data.instagram ? (
+            <a href={data.instagram}>
+              <Icon size="large" name="instagram" />
+            </a>
+          ) : null}
+          {data.website ? (
+            <a href={data.website}>
+              <Icon size="large" name="globe" />
+            </a>
+          ) : null}
 
           {AuthService.getCurrentUser() != null ? (
-            <Link to={`/edit/${data._id}`} as='a'>
-               <Icon size="large" name="edit" />
+            <Link to={`/edit/${data._id}`} as="a">
+              <Icon size="large" name="edit" />
             </Link>
           ) : null}
         </Card.Content>

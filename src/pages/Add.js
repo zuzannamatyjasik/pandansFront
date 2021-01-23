@@ -2,7 +2,6 @@ import React from "react";
 import UserService from "../services/user.service";
 import { Button, Input, Form, Grid } from "semantic-ui-react";
 
-
 const Add = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,6 +14,7 @@ const Add = (props) => {
     formData.append("instagram", e.target[5].value);
     formData.append("website", e.target[6].value);
     formData.append("photo", e.target[7].files[0]);
+    console.log(formData);
     UserService.addShop(formData)
       .then(() => props.history.push("/"))
       .catch(() => props.history.push("error"));

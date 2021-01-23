@@ -3,14 +3,17 @@ import authHeader from "./auth-header";
 
 // const getPublicContent = () => {
 //   return axios.get(API_URL + "all");
+
+const addShop = (body) => {
+  return axios.post(`http://localhost:3001/shops/`, body, {
+    headers: authHeader("file"),
+  });
+};
+
 const editShop = (id, body) => {
-  return axios.patch(
-    `http://localhost:3001/shops/${id}`,
-    {
-      ...body,
-    },
-    { headers: authHeader() }
-  );
+  return axios.patch(`http://localhost:3001/shops/${id}`, body, {
+    headers: authHeader("file"),
+  });
 };
 
 const getAllMessages = () => {
@@ -33,6 +36,9 @@ const checkIfLoggedIn = () => {
       return false;
     });
 };
+const getShop = (id) => {
+  return axios.get(`http://localhost:3001/shops/${id}`);
+};
 
 const getMessageDetails = (id) => {
   return axios.get(`http://localhost:3001/messages/${id}`, {
@@ -50,14 +56,25 @@ const deleteMessage = (id) => {
     headers: authHeader(),
   });
 };
-const addShop = (body) => {
-  return axios.post(`http://localhost:3001/shops/`, body, {
-    headers: authHeader("file"),
-  });
-};
 
 const addMessage = (body) => {
   return axios.post(`http://localhost:3001/messages/`, { ...body });
+};
+
+const getImage = (shop) => {
+  let src = "../img/two.png";
+  const arrayBufferToBase64 = (buffer) => {
+    var binary = "";
+    var bytes = [].slice.call(new Uint8Array(buffer));
+    bytes.forEach((b) => (binary += String.fromCharCode(b)));
+    return window.btoa(binary);
+  };
+  if (shop) {
+    var base64Flag = "data:" + shop.photo.data.contentType + ";base64,";
+    var imageStr = arrayBufferToBase64(shop.photo.data.data);
+    src = base64Flag + imageStr;
+  }
+  return src;
 };
 
 const UserService = {
@@ -69,6 +86,8 @@ const UserService = {
   addMessage,
   getMessageDetails,
   checkIfLoggedIn,
+  getImage,
+  getShop,
 };
 
 export default UserService;

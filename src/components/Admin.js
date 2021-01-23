@@ -13,10 +13,10 @@ const Admin = (props) => {
     logged = (
       <>
         <Menu.Item as={Link} to="/Messages">
-          Wiadomości 
+          Wiadomości
         </Menu.Item>
         <Menu.Item as={Link} to="/Add">
-          Dodaj nowy sklep 
+          Dodaj nowy sklep
         </Menu.Item>
         <Menu.Item position="right">
           <Button
