@@ -4,7 +4,6 @@ import authHeader from "./auth-header";
 // const getPublicContent = () => {
 //   return axios.get(API_URL + "all");
 const editShop = (id, body) => {
-  console.log(authHeader());
   return axios.patch(
     `http://localhost:3001/shops/${id}`,
     {
@@ -52,11 +51,9 @@ const deleteMessage = (id) => {
   });
 };
 const addShop = (body) => {
-  return axios.post(
-    `http://localhost:3001/shops/`,
-    { ...body },
-    { headers: authHeader() }
-  );
+  return axios.post(`http://localhost:3001/shops/`, body, {
+    headers: authHeader("file"),
+  });
 };
 
 const addMessage = (body) => {
@@ -71,7 +68,7 @@ const UserService = {
   addShop,
   addMessage,
   getMessageDetails,
-  checkIfLoggedIn
+  checkIfLoggedIn,
 };
 
 export default UserService;

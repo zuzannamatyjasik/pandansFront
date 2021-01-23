@@ -27,14 +27,12 @@ const App = () => {
     const timer = setInterval(async () => {
       let result = await AuthService.checkAuth();
       setValid(result);
-      console.log(valid, "APP");
     }, 12000);
     return () => {
       clearInterval(timer);
     };
   });
 
-  
   return (
     <div className="cont bg-color">
       <Router>
@@ -42,18 +40,16 @@ const App = () => {
         <main className="ui container sitecontent" id="bGround">
           <Switch>
             <Route path="/about" component={About}></Route>
-<Route path="/edit/:id" component={Edit}></Route>
-            <Route path="/details/:id?" component={Details}>
-              
-            </Route>
+            <Route path="/edit/:id" component={Edit}></Route>
+            <Route path="/details/:id?" component={Details}></Route>
 
-            <Route path="/messages" component={valid ? Messages : AccessDenied}>
-              
-            </Route>
-            
+            <Route
+              path="/messages"
+              component={valid ? Messages : AccessDenied}
+            ></Route>
+
             <Route path="/add" component={valid ? Add : AccessDenied}></Route>
-            
-            
+
             <Route path="/ac" component={AccessDenied}></Route>
             <Route path="/thanks" component={Thanks}></Route>
             <Route path="/login" component={Login}></Route>

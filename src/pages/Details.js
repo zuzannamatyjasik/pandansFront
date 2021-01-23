@@ -9,6 +9,7 @@ import {
   Button,
   Label,
 } from "semantic-ui-react";
+import Photo from "../components/Photo";
 
 const Details = (props) => {
   let { id } = useParams();
@@ -26,14 +27,19 @@ const Details = (props) => {
   if (shop && shop.category && shop.category.length > 0) {
     kategorie = shop.category.map((kat) => {
       console.log(kat);
-      return <Label className='det-label' size="big">{kat}</Label>;
+      return (
+        <Label className="det-label" size="big">
+          {kat}
+        </Label>
+      );
     });
   } else kategorie = "Brak Kategorii";
 
   if (!shop) {
-    props.history.push('/error')
+    props.history.push("/error");
     return null;
   }
+
   return (
     <Segment className="det-bg">
       <Container>
@@ -45,7 +51,11 @@ const Details = (props) => {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column>
-              <Image src="../img/two.png" />
+              {shop.photo ? (
+                <Photo shop={shop}></Photo>
+              ) : (
+                <Image src="../img/two.png" />
+            )}
             </Grid.Column>
             <Grid.Column textAlign="center">
               <div className="bio">
@@ -56,7 +66,7 @@ const Details = (props) => {
           <Grid.Row className="det-social">
             <Grid.Column>
               <div>
-              <h2>Social media:</h2>
+                <h2>Social media:</h2>
                 {shop.facebook ? (
                   <a href={shop.facebook} className="social-bagdes">
                     <i className="facebook big  icon"></i>
@@ -77,7 +87,9 @@ const Details = (props) => {
                 ) : null}
               </div>
             </Grid.Column>
-            <Grid.Column><h2>Kategorie:</h2> {kategorie}</Grid.Column>
+            <Grid.Column>
+              <h2>Kategorie:</h2> {kategorie}
+            </Grid.Column>
           </Grid.Row>
           <Grid.Row centered className="det-back">
             <Grid.Column textAlign="center">
