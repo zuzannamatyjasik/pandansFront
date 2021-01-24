@@ -45,3 +45,5 @@ Pozostałe dostępne strony:
 ![](nic.png)
 8. Brak dostępu bez autoryzacji
 ![](brak.png)
+
+Wykorzystane grafiki pochodzą z https://unsplash.com/ oraz https://blush.design/p
