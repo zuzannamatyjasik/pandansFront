@@ -44,22 +44,20 @@ const Details = (props) => {
     <Segment className="det-bg">
       <Container>
         <Grid columns="two" divided>
-          <Grid.Row centered className="det-head">
+          <Grid.Row>
+            <Grid.Column centered>
+              <div className="bio">
+                {shop.photo ? (
+                  <Image src={UserService.getImage(shop)} />
+                ) : (
+                  <Image src="../img/two.png" />
+                )}
+              </div>
+            </Grid.Column>
             <Grid.Column textAlign="center">
               <h1>{shop.name}</h1>
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row>
-            <Grid.Column>
-              {shop.photo ? (
-                <Image src={UserService.getImage(shop)} />
-              ) : (
-                <Image src="../img/two.png" />
-              )}
-            </Grid.Column>
-            <Grid.Column textAlign="center">
               <div className="bio">
-                <h2>{shop.bio}</h2>
+                <p className="bio-text">{shop.bio}</p>
               </div>
             </Grid.Column>
           </Grid.Row>

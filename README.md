@@ -1,5 +1,5 @@
-# Getting Started with Create React App
+# PANDANS FRONTEND
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Repozytorium backendu: [Pandans Backend](https://github.com/zuzannamatyjasik/pandansBack).
 
 ![](first.gif)
