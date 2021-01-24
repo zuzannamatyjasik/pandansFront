@@ -38,7 +38,9 @@ const Edit = (props) => {
     });
     UserService.editShop(newShop._id, formData)
       .then(() => props.history.push("/"))
-      .catch(() => props.history.push("/error"));
+      .catch((err) => {
+        props.history.push("/error");
+      });
   };
 
   return (

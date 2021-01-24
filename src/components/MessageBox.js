@@ -14,7 +14,6 @@ const MessageBox = (props) => {
     await UserService.getMessageDetails(props.id).then(
       (res) => (tresc = res.data.info)
     );
-    console.log(tresc);
     setWiadomosc(tresc);
     setActiveIndex(newIndex);
   };
@@ -38,12 +37,10 @@ const MessageBox = (props) => {
             </h3>
           </Accordion.Title>
           <Accordion.Content active={activeIndex === 0}>
-            <p>
-              <h3>Treść: </h3> {wiadomosc.content}
-            </p>
-            <p>
-              <h3>Adres zwotny: </h3> {wiadomosc.email}
-            </p>
+            <h3>Treść: </h3>
+            <p>{wiadomosc.content}</p>
+            <h3>Adres zwotny: </h3>
+            <p>{wiadomosc.email}</p>
           </Accordion.Content>
         </Accordion>
       </Table.Cell>

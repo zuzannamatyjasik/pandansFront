@@ -4,12 +4,8 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 
 const Admin = (props) => {
-  useEffect(() => {
-    console.log(props.valid);
-  });
   let logged;
   if (props.valid) {
-    console.log(props.valid);
     logged = (
       <>
         <Menu.Item as={Link} to="/Messages">
