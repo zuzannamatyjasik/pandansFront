@@ -9,12 +9,12 @@ const Edit = (props) => {
   const [newShop, setNewShop] = useState({
     name: "",
     bio: "",
-    email:"",
+    email: "",
     facebook: "",
     instagram: "",
     website: "",
     category: [],
-    photo: ''
+    photo: "",
   });
   useEffect(() => {
     const getData = async () => {
@@ -68,7 +68,7 @@ const Edit = (props) => {
               <Input
                 type="email"
                 name="email"
-                value={newShop.email  ? newShop.email : ""}
+                value={newShop.email ? newShop.email : ""}
                 onChange={handleChange}
                 required
               />
@@ -136,9 +136,7 @@ const Edit = (props) => {
               color="red"
               type="button"
               onClick={async () => {
-                if (
-                  window.confirm("Jesteś pewien, że chcesz usunąć wiadomość?")
-                ) {
+                if (window.confirm("Jesteś pewien, że chcesz usunąć sklep?")) {
                   await UserService.deleteShop(newShop._id);
                   props.history.push("/");
                   window.location.reload();

@@ -19,17 +19,8 @@ const Footer = () => {
       <Container textAlign="center">
         <Grid divided inverted stackable>
           <Grid.Column width={16}>
-            <Header inverted as="h2" content="Footer Header" />
-            <p className="footer-desc">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur
-              deleniti similique, esse, reprehenderit enim temporibus quisquam
-              dolor cum officiis vero est voluptatem voluptas obcaecati
-              dignissimos tempore ex provident repellendus vel!Quam doloremque
-              soluta debitis cum molestias autem, facere fuga totam dolore
-              nostrum quibusdam et nemo maxime nobis voluptates saepe
-              dignissimos accusamus quos. Dolor eveniet sequi voluptate qui
-              veniam, ad iste.
-            </p>
+            <Header inverted as="h2" content="PANDANS" />
+            <p className="footer-desc">Inspiruj się i wybieraj świadomie.</p>
           </Grid.Column>
         </Grid>
 
@@ -40,10 +31,6 @@ const Footer = () => {
           </List.Item>
           <List.Item as={Link} to="/about">
             O nas
-          </List.Item>
-
-          <List.Item as={Link} to="/login">
-            Login
           </List.Item>
         </List>
       </Container>

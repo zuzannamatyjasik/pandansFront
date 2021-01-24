@@ -126,6 +126,7 @@ a:hover {
 }
 .image-card{
   height: 185px !important;
+  object-fit: cover !important;
 }
 
 .footer-desc {

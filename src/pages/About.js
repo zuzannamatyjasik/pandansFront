@@ -12,14 +12,11 @@ const About = (props) => {
               <div>
                 <h1>PANDANS</h1>
                 <p className="ui">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Accusamus dolor deserunt ad laboriosam dolore consequuntur,
-                  reprehenderit earum non nobis. Non dolorum deserunt sit facere
-                  eveniet aperiam tempore nemo quidem inventore? Lorem ipsum
-                  dolor sit, amet consectetur adipisicing elit. Officia itaque,
-                  impedit distinctio quos hic quisquam neque asperiores.
-                  Voluptates eveniet deserunt quis exercitationem? Tempore iusto
-                  quae et, placeat odit omnis nobis!
+                  Jesteśmy stroną zajmującą się promowaniem firm, które dbają o
+                  środowski naturalne, nie eksploatują swoich pracowników i
+                  tworzą dobre jakościowo produkty. Jeśli masz ochotę dowiedzieć
+                  się o nich więcej, zapraszamy do odwiedzienia ich sklepów
+                  internetowych i social mediów.
                 </p>
               </div>
             </Grid.Column>
@@ -32,10 +29,13 @@ const About = (props) => {
               <div>
                 <h3>Skontaktuj się z nami!</h3>
                 <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Quidem voluptas tenetur nobis, quae quo, perferendis modi
-                  reprehenderit molestiae laboriosam beatae totam sed eos
-                  facilis adipisci ducimus sint labore temporibus libero.
+                  Jeśli masz pytania lub problem z którym mogłybyśmy Ci pomoć,
+                  wyślij nam wiadomość poprzez formularz!
+                  <br />
+                  Jeśli jesteś osobą prowadzącą etyczny biznes i chciałbyś
+                  dołączyć do grona firm przedstawianych na naszym portalu,
+                  skorzystaj z formularza, a skontaktujemy się z Tobą tak szybko
+                  jak będzie to możliwe.
                 </p>
               </div>
             </Grid.Column>

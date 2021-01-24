@@ -27,7 +27,7 @@ const App = () => {
     const timer = setInterval(async () => {
       let result = await AuthService.checkAuth();
       setValid(result);
-    }, 12000);
+    }, 36000);
     return () => {
       clearInterval(timer);
     };
