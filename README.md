@@ -1,5 +1,5 @@
 # PANDANS FRONTEND
-"PANDANS" to aplikacja typu SPA, która kataloguje polskie firmy, które wytwarzają różne produkty. W celu poprawnia danych łączy się z specjalnie stworzpnym w tym celu backendem Node.js.
+"PANDANS" to aplikacja typu SPA, oferująca użytkownikom przegląd etycznych, polskich marek z produktami różnego typu. Każdy ze sklepów posiada kategorie, dzięki którym użytkownik w łatwy sposób  może filtrować sklepy, a także odnośniki do profili na Facebooku, Instagramie i strony internetowej. W celu poprawnia danych łączy się z specjalnie stworzpnym w tym celu backendem Node.js.
 
 Strona pozwala na:
 * Przeglądanie sklepów dodanych przez administratora
